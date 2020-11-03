@@ -1,4 +1,5 @@
 window.addEventListener("load", function(){
+    document.getElementById('stopTimerButton').style.visibility = 'hidden';
     loadConfig();
 });
 
@@ -37,9 +38,10 @@ function startReminder() {
 
 function startTimer() {
     document.getElementById('timerButton').style.visibility = 'hidden';
+    document.getElementById('stopTimerButton').style.visibility = 'visible';
     var minute = (localStorage.getItem('timer')-1);
     var sec = 60;
-    var intervalToShowCounter = setInterval(function() {
+    window.intervalToShowCounter = setInterval(function() {
       document.getElementById("timer").innerHTML = minute + " : " + sec;
       sec--;
       if (sec == 00) {
@@ -53,4 +55,11 @@ function startTimer() {
         }
       }
     }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(window.intervalToShowCounter);
+    document.getElementById('stopTimerButton').style.visibility = 'hidden';
+    document.getElementById("timer").innerHTML = "";
+    document.getElementById('timerButton').style.visibility = 'visible';
 }
