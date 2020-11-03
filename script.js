@@ -22,18 +22,12 @@ function setTime(time) {
 
 function startTimer() {
     let timer = localStorage.getItem('timer');
-
     startTimer();
-
-    var timerInterval = setInterval(function() {
-        clearInterval(timerInterval);
-        startReminder();
-    }, (timer*60000));
 }
 
 function startReminder() {
-    var win = window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
-    win.focus();
+    var myAudio = new Audio('ring.mp3');
+    myAudio.play();
 }
 
 function startTimer() {
@@ -50,8 +44,9 @@ function startTimer() {
         if (minute == 0) {
             document.getElementById("timer").innerHTML = "";
             document.getElementById('timerButton').style.visibility = 'visible';
+            startReminder();
+            stopTimer();
             startTimer();
-            clearInterval(intervalToShowCounter);
         }
       }
     }, 1000);
