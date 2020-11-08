@@ -34,13 +34,13 @@ function startTimer() {
     document.getElementById('timerButton').style.visibility = 'hidden';
     document.getElementById('stopTimerButton').style.visibility = 'visible';
     var minute = (localStorage.getItem('timer')-1);
-    var sec = 60;
+    var sec = 59;
     window.intervalToShowCounter = setInterval(function() {
       document.getElementById("timer").innerHTML = minute + " : " + sec;
       sec--;
-      if (sec == 00) {
+      if (sec == 59) {
         minute --;
-        sec = 60;
+        sec = 59;
         if (minute == 0) {
             document.getElementById("timer").innerHTML = "";
             document.getElementById('timerButton').style.visibility = 'visible';
