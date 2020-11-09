@@ -38,7 +38,7 @@ function startTimer() {
     window.intervalToShowCounter = setInterval(function() {
       document.getElementById("timer").innerHTML = minute + " : " + sec;
       sec--;
-      if (sec == 59) {
+      if (sec == 00) {
         minute --;
         sec = 59;
         if (minute == 0) {
